@@ -11,6 +11,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const cors = require('cors');
 
+const userRouter = require('./routes/users');
+
 const app = express();
 
 const allowedCors = [
@@ -34,6 +36,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+
+app.use('/', userRouter);
 
 app.use(errorLogger);
 
