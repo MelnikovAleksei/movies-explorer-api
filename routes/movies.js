@@ -10,7 +10,7 @@ const {
   createMovie,
 } = require('../controllers/movies');
 
-movieRouter.get('/movies', getMovies);
-movieRouter.post('/movies', validateCreateMovie, createMovie);
+movieRouter.get('/movies', validateId, getMovies);
+movieRouter.post('/movies', validateCreateMovie,createMovie);
 
 module.exports = movieRouter;

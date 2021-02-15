@@ -10,6 +10,10 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле-строка "director - режиссёр" является обязательным'],
   },
+  duration: {
+    type: Number,
+    required: [true, 'Поле-число "duration - хронометраж" является обязательным'],
+  },
   year: {
     type: String,
     required: [true, 'Поле-строка "year - год" является обязательным'],
@@ -64,7 +68,7 @@ const movieSchema = new mongoose.Schema({
   movieId: {
     type: Number,
     unique: true,
-    required: [true, 'Поле-строка "movieId - id фильма, который содержится в ответе сервиса MoviesExplorer" является обязательным'],
+    required: [true, 'Поле-число "movieId - id фильма, который содержится в ответе сервиса MoviesExplorer" является обязательным'],
   },
 });
 
