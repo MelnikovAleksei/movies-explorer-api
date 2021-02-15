@@ -49,10 +49,27 @@ const validateDeleteMovie = celebrate({
   }),
 });
 
+const validateLogin = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required().min(8).max(30),
+  }),
+});
+
+const validateSignup = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required().pattern(new RegExp('^[A-Za-z0-9]{8,30}$')),
+    name: Joi.string().min(2).max(30),
+  }),
+});
+
 module.exports = {
   validateId,
   validateUpdateCurrentUser,
   validateCreateMovie,
   validateDeleteMovie,
+  validateLogin,
+  validateSignup,
 };
 

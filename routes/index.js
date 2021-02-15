@@ -1,5 +1,17 @@
 const router = require('express').Router();
 
+const {
+  validateLogin,
+  validateSignup,
+} = require('../middlewares/requestValidation');
+
+const {
+  login,
+  createUser,
+} = require('../controllers/users');
+
+const auth = require('../middlewares/auth');
+
 const userRouter = require('./users');
 const movieRouter = require('./movies');
 
@@ -9,11 +21,11 @@ const {
   NOT_FOUND_ERROR_MESSAGE,
 } = require('../utils/constants');
 
-router.use(userRouter);
-router.use(movieRouter);
+router.post('/signin', validateLogin, login);
+router.post('/signup', validateSignup, createUser);
 
-router.all('*', () => {
-  throw new NotFoundError(NOT_FOUND_ERROR_MESSAGE);
-})
+router.use(auth, userRouter);
+router.use(auth, movieRouter);
+
 
 module.exports = router;

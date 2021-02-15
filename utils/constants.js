@@ -5,6 +5,7 @@ const NOT_FOUND_MOVIE_ERROR_MESSAGE = 'Нет фильма с таким id';
 const VALIDATION_ERROR_NAME = 'ValidationError';
 const FORBIDDEN_DELETE_MOVIE_MESSAGE = 'Нет доступа к удалению фильма';
 const NOT_FOUND_ERROR_MESSAGE = 'Запрашиваемый ресурс не найден';
+const NOT_AUTH_ERROR = 'Необходима авторизация';
 
 module.exports = {
   BAD_REQUEST,
@@ -14,4 +15,5 @@ module.exports = {
   VALIDATION_ERROR_NAME,
   FORBIDDEN_DELETE_MOVIE_MESSAGE,
   NOT_FOUND_ERROR_MESSAGE,
+  NOT_AUTH_ERROR,
 }
