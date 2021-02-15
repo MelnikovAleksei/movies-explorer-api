@@ -1,6 +1,7 @@
 const User = require('../models/user');
 
 const getCurrentUser = (req, res, next) => {
+
   const id = req.user._id;
 
   User.findById(id)
@@ -8,7 +9,7 @@ const getCurrentUser = (req, res, next) => {
       res.status(200).send(user);
     })
     .catch((err) => {
-      res.send(id);
+      res.send(err);
     })
     .catch(next);
 };
