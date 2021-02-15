@@ -6,7 +6,7 @@ const BadRequestError = require('../errors/BadRequestError');
 const ForbiddenError = require('../errors/ForbiddenError');
 
 const {
-  NOT_FOUND_MESSAGE,
+  NOT_FOUND_MOVIE_ERROR_MESSAGE,
   VALIDATION_ERROR_NAME,
   FORBIDDEN_DELETE_MOVIE_MESSAGE,
 } = require('../utils/constants');
@@ -48,7 +48,7 @@ const deleteMovie = (req, res, next) => {
   Movie.findById(movieId)
     .then((movie) => {
       if (!movie) {
-        throw new NotFoundError(NOT_FOUND_MESSAGE);
+        throw new NotFoundError(NOT_FOUND_MOVIE_ERROR_MESSAGE);
       }
       if (movie.owner.toString() !== owner) {
         throw new ForbiddenError(FORBIDDEN_DELETE_MOVIE_MESSAGE);

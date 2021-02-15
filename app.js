@@ -13,8 +13,7 @@ const errorHandler = require('./middlewares/errorHandler');
 
 const cors = require('cors');
 
-const userRouter = require('./routes/users');
-const movieRouter = require('./routes/movies');
+const router = require('./routes/index');
 
 const app = express();
 
@@ -40,9 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.use('/', userRouter);
-
-app.use('/', movieRouter);
+app.use('/', router);
 
 app.use(errorLogger);
 
