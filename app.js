@@ -9,9 +9,12 @@ const { errors } = require('celebrate');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+const errorHandler = require('./middlewares/errorHandler');
+
 const cors = require('cors');
 
 const userRouter = require('./routes/users');
+const movieRouter = require('./routes/movies');
 
 const app = express();
 
@@ -39,25 +42,13 @@ app.use(requestLogger);
 
 app.use('/', userRouter);
 
+app.use('/', movieRouter);
+
 app.use(errorLogger);
 
 app.use(errors());
 
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-  if (err.kind === 'ObjectId') {
-    res.status(400).send({
-      message: 'Неверно переданы данные',
-    });
-  } else {
-    res.status(statusCode).send({
-      message: statusCode === 500
-        ? 'На сервере произошла ошибка'
-        : message,
-    });
-  }
-  next();
-});
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`); /* eslint-disable-line no-console */
