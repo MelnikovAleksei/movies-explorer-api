@@ -62,7 +62,8 @@ const movieSchema = new mongoose.Schema({
     required: [true, 'Поле-строка "owner - _id пользователя, который сохранил статью" является обязательным'],
   },
   movieId: {
-    type: String,
+    type: Number,
+    unique: true,
     required: [true, 'Поле-строка "movieId - id фильма, который содержится в ответе сервиса MoviesExplorer" является обязательным'],
   },
 });
