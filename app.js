@@ -1,25 +1,39 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 
-require('dotenv').config();
-
 const bodyParser = require('body-parser');
+
+const {
+  MONGO_DB_ADDRESS,
+  PORT_NUMBER,
+  ALLOWED_CORS,
+} = require('./utils/constants');
+
+const { errors } = require('celebrate');
+
+const rateLimiter = require('./middlewares/rateLimit');
+
+const helmet = require('helmet');
+
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
+const errorHandler = require('./middlewares/errorHandler');
 
 const cors = require('cors');
 
+const router = require('./routes/index');
+
 const app = express();
 
-const allowedCors = [
-  'http://localhost:3001',
-];
-
 app.use(cors({
-  origin: allowedCors,
+  origin: ALLOWED_CORS,
 }));
 
-const { PORT = 3000 } = process.env;
+const { PORT = PORT_NUMBER } = process.env;
 
-mongoose.connect('mongodb://localhost:27017/movies-explorer-db', {
+mongoose.connect(MONGO_DB_ADDRESS, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -28,6 +42,26 @@ mongoose.connect('mongodb://localhost:27017/movies-explorer-db', {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(requestLogger);
+
+app.use(helmet());
+
+app.use(rateLimiter)
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
+app.use('/', router);
+
+app.use(errorLogger);
+
+app.use(errors());
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`); /* eslint-disable-line no-console */
