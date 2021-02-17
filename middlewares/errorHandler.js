@@ -17,7 +17,9 @@ const errorHandler = (err, req, res, next) => {
         : message,
     });
   }
-  next();
-}
+  if (next) {
+    next();
+  };
+};
 
 module.exports = errorHandler;
