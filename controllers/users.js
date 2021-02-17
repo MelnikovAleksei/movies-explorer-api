@@ -14,7 +14,6 @@ const {
 } = require('../utils/constants');
 
 const getCurrentUser = (req, res, next) => {
-
   const id = req.user._id;
 
   User.findById(id)
@@ -46,7 +45,7 @@ const updateCurrentUser = (req, res, next) => {
       }
     })
     .catch(next);
-}
+};
 
 const login = (req, res, next) => {
   const { email, password } = req.body;

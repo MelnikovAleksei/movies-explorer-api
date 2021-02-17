@@ -5,23 +5,20 @@ const mongoose = require('mongoose');
 
 const bodyParser = require('body-parser');
 
+const { errors } = require('celebrate');
+const helmet = require('helmet');
+const cors = require('cors');
 const {
   MONGO_DB_ADDRESS,
   PORT_NUMBER,
   ALLOWED_CORS,
 } = require('./utils/constants');
 
-const { errors } = require('celebrate');
-
 const rateLimiter = require('./middlewares/rateLimit');
-
-const helmet = require('helmet');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const errorHandler = require('./middlewares/errorHandler');
-
-const cors = require('cors');
 
 const router = require('./routes/index');
 
@@ -47,7 +44,7 @@ app.use(requestLogger);
 
 app.use(helmet());
 
-app.use(rateLimiter)
+app.use(rateLimiter);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
