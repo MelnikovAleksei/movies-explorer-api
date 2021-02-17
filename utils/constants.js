@@ -43,7 +43,7 @@ const MOVIE_SCHEMA_REQUIRED_MESSAGES = {
   THUMBNAIL: 'Поле-строка "thumbnail - миниатюрное изображение постера к фильму" является обязательным',
   OWNER: 'Поле-строка "owner - _id пользователя, который сохранил статью" является обязательным',
   MOVIE_ID: 'Поле-число "movieId - id фильма, который содержится в ответе сервиса MoviesExplorer" является обязательным',
-}
+};
 const MOVIE_SCHEMA_VALIDATE_MESSAGES = {
   IMAGE: 'не является URL адресом для постера к фильму',
   TRAILER: 'не является URL адресом для трейлера к фильму',
@@ -70,4 +70,4 @@ module.exports = {
   MOVIE_SCHEMA_VALIDATE_MESSAGES,
   REQUEST_LOG_FILENAME,
   ERROR_LOG_FILENAME,
-}
+};

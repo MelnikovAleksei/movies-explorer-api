@@ -39,7 +39,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.IMAGE],
     validate: {
-      validator (v) {
+      validator(v) {
         return isURL(v);
       },
       message: (props) => `${props.value} ${MOVIE_SCHEMA_VALIDATE_MESSAGES.IMAGE}`,
@@ -49,7 +49,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.TRAILER],
     validate: {
-      validator (v) {
+      validator(v) {
         return isURL(v);
       },
       message: (props) => `${props.value} ${MOVIE_SCHEMA_VALIDATE_MESSAGES.TRAILER}`,
@@ -59,7 +59,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.THUMBNAIL],
     validate: {
-      validator (v) {
+      validator(v) {
         return isURL(v);
       },
       message: (props) => `${props.value} ${MOVIE_SCHEMA_VALIDATE_MESSAGES.THUMBNAIL}`,
