@@ -173,3 +173,25 @@ POST https://api.cinema-explorer.students.nomoredomains.icu/signin
     "token": "qwJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDJlMGI0MGFkZTJlMDFkN2VjND.kNTciLCJpYXQiOjEwBTM2MzAzjjEsImV4cCI1MTYxNDIzNTEyMX0.ciMALhlsVPuG0SwzY7isi390LjlBNNZ_9bOizCq8HTs"
 }
 ```
+
+## Используемые технологии 
+
+* Expressjs
+* nodemon
+* MongoDB
+* mongoose
+* dotenv
+* cors
+* celebrate
+* bcryptjs
+* express-rate-limit
+* winston
+* express-winston
+* helmet
+* jsonwebtoken
+* validator
+* eslint
+
+## Чеклист
+
+[Критерии диплома веб-разработка](https://code.s3.yandex.net/web-developer/static/new-program/web-diploma-criteria-2.0/index.html) 
