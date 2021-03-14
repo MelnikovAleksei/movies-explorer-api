@@ -15,8 +15,8 @@ const MONGO_DB_ADDRESS = 'mongodb://localhost:27017/movies-explorer-db';
 const PORT_NUMBER = 3000;
 const ALLOWED_CORS = [
   'http://localhost:3001',
-  'api.cinema-explorer.students.nomoredomains.icu',
-  'cinema-explorer.students.nomoredomains.icu',
+  'https://api.cinema-explorer.students.nomoredomains.icu',
+  'https://cinema-explorer.students.nomoredomains.icu',
 ];
 
 const USER_SCHEMA_REQUIRED_MESSAGES = {
