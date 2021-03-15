@@ -72,7 +72,6 @@ const movieSchema = new mongoose.Schema({
   },
   movieId: {
     type: Number,
-    unique: true,
     required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.MOVIE_ID],
   },
 });
